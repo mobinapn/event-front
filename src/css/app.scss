@@ -1,0 +1,23 @@
+// app global css in SCSS form
+@font-face {
+  font-family: 'Tanha';
+  src: url('/fonts/Tanha.woff2') format('woff2');
+  font-weight: normal;
+  font-display: swap;
+}
+
+* {
+    direction: rtl;
+    font-family: "Tanha"; 
+  }
+  .q-field--error .q-field__bottom {
+    color: var(--q-negative);
+    display: flex;
+    flex-direction: column;
+}
+
+.q-field__label {
+  right: 0 !important;
+  left: auto !important;
+  text-align: right !important;
+}
