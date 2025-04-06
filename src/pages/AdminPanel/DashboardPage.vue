@@ -126,7 +126,7 @@ const persianRevenue = computed(() => toPersianNumbers( stats.value.totalRevenue
 const fetchDashboardStats = async () => {
   loading.value = true;
   try {
-    const response = await fetch('http://localhost:3000/dashboardStats');
+    const response = await fetch('https://json-server-production-de66.up.railway.app/dashboardStats');
     stats.value = await response.json();
     lastUpdateTime.value = date.formatDate(new Date(), 'HH:mm:ss');
   } catch (error) {

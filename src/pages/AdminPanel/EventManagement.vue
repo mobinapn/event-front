@@ -1051,7 +1051,7 @@ const confirmDelete = (event) => {
 
 const deleteEvent = async () => {
   try {
-    await axios.delete(`http://localhost:3000/events/${String(selectedEvent.value.id)}`);
+    await axios.delete(`https://json-server-production-de66.up.railway.app/events/${String(selectedEvent.value.id)}`);
     
     // Convert IDs to strings for correct comparison
     events.value = events.value.filter(e => String(e.id) !== String(selectedEvent.value.id));
@@ -1095,7 +1095,7 @@ const saveEvent = async () => {
 
     if (isNewEvent.value) {
       // Creating a new event (use POST)
-      const response = await axios.post(`http://localhost:3000/events`, eventToSave);
+      const response = await axios.post(`https://json-server-production-de66.up.railway.app/events`, eventToSave);
       
       // Convert ID to string before adding to the list
       response.data.id = String(response.data.id);
@@ -1109,7 +1109,7 @@ const saveEvent = async () => {
       });
     } else {
       // Updating an existing event (use PUT)
-      const response = await axios.put(`http://localhost:3000/events/${eventToSave.id}`, eventToSave);
+      const response = await axios.put(`https://json-server-production-de66.up.railway.app/events/${eventToSave.id}`, eventToSave);
 
       // Convert ID to string
       response.data.id = String(response.data.id);
@@ -1190,7 +1190,7 @@ const fetchEvents = async () => {
   loading.value = true;
   
   try {
-    const response = await axios.get('http://localhost:3000/events');
+    const response = await axios.get('https://json-server-production-de66.up.railway.app/events');
 
     // Convert all event IDs to strings
     events.value = response.data.map(event => ({

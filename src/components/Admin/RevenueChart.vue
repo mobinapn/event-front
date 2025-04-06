@@ -6,7 +6,7 @@ const revenueData = ref([]);
 
 const fetchRevenueData = async () => {
   try {
-    const response = await fetch('http://localhost:3000/revenue')
+    const response = await fetch('https://json-server-production-de66.up.railway.app/revenue')
     const data = await response.json();
 
     revenueData.value = data.map((item) => ({
