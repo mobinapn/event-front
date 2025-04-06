@@ -1,6 +1,7 @@
 import { defineRouter } from '#q-app/wrappers'
 import { createRouter, createMemoryHistory, createWebHistory, createWebHashHistory } from 'vue-router'
-import routes from './routes'
+import routes from './routes' 
+import { useAuthStore } from 'src/stores/auth'
 
 /*
  * If not building with SSR mode, you can
@@ -25,6 +26,21 @@ export default defineRouter(function (/* { store, ssrContext } */) {
     // quasar.conf.js -> build -> publicPath
     history: createHistory(process.env.VUE_ROUTER_BASE)
   })
+
+  Router.beforeEach((to, from, next) => {
+    const authStore = useAuthStore()
+    
+    // If route requires full authentication (not just modal)
+    if (to.meta.requiresAuth && !authStore.isAuthenticated) {
+      localStorage.setItem('attemptedRoute', to.fullPath)
+      return next('/login')
+    }
+    
+    next()
+  })
+
+
+  
 
   return Router
 })
