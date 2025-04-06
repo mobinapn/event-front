@@ -4,9 +4,13 @@
     <q-page-container>
       <q-page class="login-page" dir="rtl">
         <div class="floating-particles">
-          <div v-for="n in 30" :key="n" class="particle" :class="`particle-${n}`"></div>
+          <div
+            v-for="n in 30"
+            :key="n"
+            class="particle"
+            :style="generateParticleStyle()"
+          ></div>
         </div>
-
         <div class="container">
           <div class="auth-container">
             <div class="auth-right">
@@ -58,40 +62,33 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref , onMounted } from 'vue'
 import LogIn from '../components/LogIn.vue'
 import SignUp from '../components/SignUp.vue'
-import anime from 'animejs'
+
+
+
 
 const activeTab = ref('login')
 
-const animateParticles = () => {
-  const particles = document.querySelectorAll('.particle')
-  particles.forEach((particle) => {
-    const size = Math.random() * 6 + 4
-    const delay = Math.random() * 5000
-    const duration = Math.random() * 5000 + 3000
-    const left = Math.random() * 100
-    const opacity = Math.random() * 0.5 + 0.3
+function generateParticleStyle() {
+  const size = Math.random() * 6 + 4 // 4px to 10px
+  const left = Math.random() * 100  // vw
+  const duration = Math.random() * 5 + 3 // 3s to 8s
+  const delay = Math.random() * 5 // 0s to 5s
+  const opacity = Math.random() * 0.5 + 0.3
 
-    particle.style.width = `${size}px`
-    particle.style.height = `${size}px`
-    particle.style.left = `${left}vw`
-    particle.style.opacity = opacity
-
-    anime({
-      targets: particle,
-      translateY: [-10, -window.innerHeight],
-      loop: true,
-      easing: 'easeInOutSine',
-      duration: duration,
-      delay: delay,
-    })
-  })
+  return {
+    width: `${size}px`,
+    height: `${size}px`,
+    left: `${left}vw`,
+    opacity,
+    animation: `float ${duration}s ease-in-out ${delay}s infinite`
+  }
 }
 
 onMounted(() => {
-  animateParticles()
+  generateParticleStyle()
 })
 </script>
 
@@ -120,7 +117,7 @@ onMounted(() => {
   position: absolute;
   background: #ff5a5f;
   border-radius: 50%;
-  bottom: -10px; /* Start slightly below the screen */
+  bottom: -10px;
 }
 
 @keyframes float {

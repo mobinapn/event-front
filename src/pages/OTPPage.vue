@@ -3,9 +3,9 @@
   <q-layout>
     <q-page-container>
       <q-page class="login-page" dir="rtl">
-        <div class="floating-particles">
+        <!-- <div class="floating-particles">
           <div v-for="n in 30" :key="n" class="particle" :class="`particle-${n}`"></div>
-        </div>
+        </div> -->
 
         <div class="container">
           <div class="auth-container">
@@ -87,7 +87,7 @@
 
 <script setup>
 import { ref, onMounted, computed } from 'vue'
-import anime from 'animejs'
+// import anime from 'animejs'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 
@@ -95,30 +95,30 @@ const router = useRouter()
 const $q = useQuasar()
 
 const loading = ref(false)
-const animateParticles = () => {
-  const particles = document.querySelectorAll('.particle')
-  particles.forEach((particle) => {
-    const size = Math.random() * 6 + 4
-    const delay = Math.random() * 5000
-    const duration = Math.random() * 5000 + 3000
-    const left = Math.random() * 100
-    const opacity = Math.random() * 0.5 + 0.3
+// const animateParticles = () => {
+//   const particles = document.querySelectorAll('.particle')
+//   particles.forEach((particle) => {
+//     const size = Math.random() * 6 + 4
+//     const delay = Math.random() * 5000
+//     const duration = Math.random() * 5000 + 3000
+//     const left = Math.random() * 100
+//     const opacity = Math.random() * 0.5 + 0.3
 
-    particle.style.width = `${size}px`
-    particle.style.height = `${size}px`
-    particle.style.left = `${left}vw`
-    particle.style.opacity = opacity
+//     particle.style.width = `${size}px`
+//     particle.style.height = `${size}px`
+//     particle.style.left = `${left}vw`
+//     particle.style.opacity = opacity
 
-    anime({
-      targets: particle,
-      translateY: [-10, -window.innerHeight],
-      loop: true,
-      easing: 'easeInOutSine',
-      duration: duration,
-      delay: delay,
-    })
-  })
-}
+//     anime({
+//       targets: particle,
+//       translateY: [-10, -window.innerHeight],
+//       loop: true,
+//       easing: 'easeInOutSine',
+//       duration: duration,
+//       delay: delay,
+//     })
+//   })
+// }
 
 // State for OTP inputs
 const otp = ref(['', '', '', ''])
@@ -214,7 +214,7 @@ onMounted(() => {
   otpInputs.value = document.querySelectorAll('.otp-input')
   otpInputs.value[0]?.focus()
   startTimer()
-  animateParticles()
+  // animateParticles()
 })
 </script>
 
