@@ -1,15 +1,8 @@
 {
-<<<<<<< HEAD
-  "name": "event-management",
-  "version": "0.0.1",
-  "description": "event management",
-  "productName": "event-management",
-=======
   "name": "event-frontend",
   "version": "0.0.1",
   "description": "A Quasar Project",
   "productName": "Quasar App",
->>>>>>> 346e535 (Initialize the project 🚀)
   "author": "mobinapn <m.paknia81@gmail.com>",
   "type": "module",
   "private": true,
