@@ -13,15 +13,28 @@
       <q-carousel-slide
         :name="1"
         img-src="https://dynamic-media.tacdn.com/media/attractions-content--1x-1/14/37/d2/35.jpg?f=webp&amp;w=1900&amp;h=500&amp;s=1"
-      />
+      ><div class="absolute-top custom-caption">
+        <div class="text-h4 q-mt-lg">
+        سفر رو آسون‌تر از همیشه برنامه‌ریزی کن!
+      </div>
+      </div>
+    </q-carousel-slide>
       <q-carousel-slide
         :name="2"
         img-src="https://dynamic-media.tacdn.com/media/attractions-content--1x-1/14/37/d0/e0.jpg?f=webp&amp;w=1900&amp;h=500&amp;s=1"
-      />
+      >
+      <div class="absolute-top custom-caption">
+        <div class="text-h4 q-mt-lg">سفر رو آسون‌تر از همیشه برنامه‌ریزی کن!</div>
+      </div>
+    </q-carousel-slide>
       <q-carousel-slide
         :name="3"
         img-src="https://dynamic-media.tacdn.com/media/attractions-content--1x-1/14/c3/5f/aa.jpg?f=webp&amp;w=1900&amp;h=500&amp;s=1"
-      />
+      >
+      <div class="absolute-top custom-caption">
+        <div class="text-h4 q-mt-lg">سفر رو آسون‌تر از همیشه برنامه‌ریزی کن!</div>
+      </div>
+    </q-carousel-slide>
 
       <template #navigation-icon="{ active, onClick }">
         <i
@@ -48,6 +61,12 @@ const slide = ref(1)
 </script>
 
 <style scoped>
+.custom-caption {
+  text-align: center ;
+  padding: 12px ;
+  color: white ;
+  z-index: 5;
+}
 .carousel-wrapper {
   position: relative;
   width: 100%;
