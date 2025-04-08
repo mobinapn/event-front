@@ -387,12 +387,12 @@
   
   // Password validation
   const validatePassword = () => {
-    if (!loginData.value.password) {
-      loginFormErrors.value.password = true;
+    if (!signupData.value.password) {
+      signupFormErrors.value.password = true;
       return false;
     }
     
-    loginFormErrors.value.password = false;
+    signupFormErrors.value.password = false;
     return true;
   };
   
@@ -469,13 +469,14 @@
 
 // Signup form validation
 const isSignupFormValid = computed(() => {
-  return signupData.value.username &&
-         signupData.value.password &&
-         signupData.value.confirmPassword &&
-         signupData.value.acceptTerms &&
-         !signupFormErrors.value.phone &&
-         !signupFormErrors.value.password &&
-         !signupFormErrors.value.confirmPassword;
+  return (
+    signupData.value.username && 
+    signupData.value.username.length >= 10 && 
+    signupData.value.password && 
+    signupData.value.password.length >= 6 && 
+    signupData.value.confirmPassword === signupData.value.password &&
+    signupData.value.acceptTerms
+  );
 });
 
 // Timer for OTP expiration
@@ -545,48 +546,61 @@ const handleLogin = async () => {
 
 // Signup handler
 const handleSignup = async () => {
+  console.log('Signup handler triggered');
+  
   // Validate all fields with user-friendly notifications
   const isPhoneValid = validatePhone();
   const isPasswordValid = validatePassword();
   const isConfirmPasswordValid = validateConfirmPassword();
   const isTermsAccepted = validateTerms();
-
+  
+  console.log('Validation results:', { 
+    isPhoneValid, 
+    isPasswordValid, 
+    isConfirmPasswordValid, 
+    isTermsAccepted 
+  });
+  
   if (!isPhoneValid || !isPasswordValid || !isConfirmPasswordValid || !isTermsAccepted) {
+    console.log('Validation failed, returning early');
     return;
   }
-  
-  let formattedUsername = signupData.value.username;
-  if (formattedUsername.length > 10) {
-    formattedUsername = formattedUsername.slice(-10);
+ 
+  // Directly modify the signupData instead of using a local variable
+  if (signupData.value.username.length > 10) {
+    signupData.value.username = signupData.value.username.slice(-10);
   }
-  
+ 
+  console.log('Attempting registration with:', signupData.value.username);
   signupLoading.value = true;
-  
+ 
   try {
     const formData = {
-      username: formattedUsername,
+      username: signupData.value.username,
       password: signupData.value.password,
     };
     
+    console.log('Sending registration data:', formData);
     await authStore.register(formData);
-    
+   
+    console.log('Registration successful');
     $q.notify({
       type: 'positive',
-      message: 'ثبت نام با موفقیت انجام شد. لطفا کد تایید را وارد کنید.',
+      message: 'ثبت نام با موفقیت انجام شد. لطفا کد  1 2 3 4 را وارد کنید.',
       position: 'top',
       timeout: 2000
     });
-    
+   
     // Show OTP dialog
-    phoneNumber.value = formattedUsername;
+    phoneNumber.value = signupData.value.username;
     showOtpDialog.value = true;
-    dialogModel.value = false
-    
+    dialogModel.value = false;
+   
   } catch (error) {
-    console.log(error);
+    console.log('Registration error:', error);
     $q.notify({
       type: 'negative',
-      message: authStore.registerError || 'خطا در ثبت نام. لطفا مجددا تلاش کنید.',
+      message: 'خطا در ثبت نام. لطفا مجددا تلاش کنید.',
       position: 'top',
       timeout: 3000
     });

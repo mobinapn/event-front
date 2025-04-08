@@ -431,6 +431,7 @@ onUnmounted(() => {
 }
 
 .fixed-bottom-nav {
+  margin-top: 200px;
   position: fixed;
   bottom: 0;
   width: 100%;

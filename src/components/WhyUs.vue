@@ -5,8 +5,8 @@
     </div>
 
     <div class="row q-col-gutter-md">
-      <div v-for="feature in features" :key="feature.id" class="col-12 col-sm-6 col-md-3">
-        <q-card class="feature-card text-center q-pa-md" v-ripple flat>
+      <div v-for="feature in features" :key="feature.id" class="col-12 col-sm-6 col-md-3 q-mb-md">
+        <q-card class="feature-card text-center q-pa-md q-mb-md" v-ripple flat>
           <q-card-section>
             <div class="flex flex-center q-mb-md">
               <!-- SVG with better color handling -->

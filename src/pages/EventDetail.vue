@@ -4,7 +4,7 @@
 <template>
   <q-page class="trip-detail-page " dir="rtl">
     <!-- Loading and Error States -->
-    <div v-if="loading" class="fullscreen-loader" dir="rtl">
+    <div v-if="loading" class="fullscreen-loader " dir="rtl">
       <LoadingState />
     </div>
 
@@ -442,7 +442,14 @@ onMounted(async () => {
   --radius-md: 12px;
   --radius-lg: 20px;
 }
-
+.fullscreen-loader{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100px;
+  text-align: center;
+}
 // Base Page Styles
 .trip-detail-page {
   background:#f8fafc;;
