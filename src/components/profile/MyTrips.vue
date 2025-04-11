@@ -148,7 +148,7 @@ const fetchTrips = async () => {
 
   try {
     console.log(`Fetching trips for userId: ${props.userId}`)
-    const response = await axios.get(`http://localhost:3000/purchased-trips?userId=${props.userId}`)
+    const response = await axios.get(`https://web-production-d8f31.up.railway.app/purchased-trips?userId=${props.userId}`)
     console.log('Trips response:', response.data)
     
     // Sort trips by purchase date (newest first)

@@ -269,7 +269,7 @@ const cancelTrip = async () => {
     refundAmount.value = Math.floor(props.trips.totalAmount * refundPercent)
     
     // API call to cancel the trip
-    await axios.patch(`http://localhost:3000/purchased-trips/${props.trips.id}`, {
+    await axios.patch(`https://web-production-d8f31.up.railway.app/purchased-trips/${props.trips.id}`, {
       status: 'canceled',
       refundAmount: refundAmount.value,
       cancelDate: new Date().toISOString()
