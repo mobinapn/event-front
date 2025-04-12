@@ -60,7 +60,7 @@
         <div v-else>
           <div class="text-h6 q-mb-sm">هنوز سفری رزرو نکرده‌اید</div>
           <div class="text-body2 text-grey-7 q-mb-md">به بخش تورها مراجعه کنید و اولین سفر خود را رزرو کنید.</div>
-          <q-btn color="primary" label="مشاهده تورها" to="/tours" />
+          <q-btn color="primary" label="مشاهده تورها" to="/" />
         </div>
       </q-card-section>
     </q-card>
@@ -148,7 +148,7 @@ const fetchTrips = async () => {
 
   try {
     console.log(`Fetching trips for userId: ${props.userId}`)
-    const response = await axios.get(`https://web-production-d8f31.up.railway.app/purchased-trips?userId=${props.userId}`)
+    const response = await axios.get(`https://json-server-production-de66.up.railway.app/purchased-trips?userId=${props.userId}`)
     console.log('Trips response:', response.data)
     
     // Sort trips by purchase date (newest first)
