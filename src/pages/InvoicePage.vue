@@ -293,7 +293,7 @@ const processPayment = async () => {
         // Clear form state as we're done with the reservation flow
         clearReservationFormData()
 
-        await axios.post('https://json-server-production-de66.up.railway.app/purchased-trips' ,{
+        await axios.post('https://json-server-pied-seven.vercel.app/api/purchased-trips' ,{
           userId : currentUserId ,
           tripData : tripData.value ,
           passengersData : passengersData.value ,

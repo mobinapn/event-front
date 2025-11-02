@@ -148,7 +148,7 @@ const fetchTrips = async () => {
 
   try {
     console.log(`Fetching trips for userId: ${props.userId}`)
-    const response = await axios.get(`https://json-server-production-de66.up.railway.app/purchased-trips?userId=${props.userId}`)
+    const response = await axios.get(`https://json-server-pied-seven.vercel.app/api/purchased-trips?userId=${props.userId}`)
     console.log('Trips response:', response.data)
     
     // Sort trips by purchase date (newest first)

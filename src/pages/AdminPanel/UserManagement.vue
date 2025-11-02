@@ -298,7 +298,7 @@
       // Methods
       const fetchUsers = async () => {
   try {
-    const response = await axios.get('https://json-server-production-de66.up.railway.app/Users')
+    const response = await axios.get('https://json-server-pied-seven.vercel.app/api/Users')
     users.value = response.data || []
   } catch (error) {
     console.error('Error fetching users:', error)
@@ -422,7 +422,7 @@ const saveUserChanges = async () => {
     
     // Send PUT request to update user
     const response = await axios.put(
-      `https://json-server-production-de66.up.railway.app/Users/${selectedUser.value.id}`, 
+      `https://json-server-pied-seven.vercel.app/api/Users/${selectedUser.value.id}`, 
       updatedUser
     )
     
@@ -465,7 +465,7 @@ const toggleUserStatus = async () => {
     
     // Send PATCH request to update just the status
     const response = await axios.patch(
-      `https://json-server-production-de66.up.railway.app/Users/${selectedUser.value.id}`,
+      `https://json-server-pied-seven.vercel.app/api/Users/${selectedUser.value.id}`,
       { status: newStatus } ,
       console.log('Updating user' , response)
     )
@@ -504,7 +504,7 @@ const deleteUser = async () => {
   
   try {
     // Send DELETE request
-    await axios.delete(`https://json-server-production-de66.up.railway.app/Users/${selectedUser.value.id}`)
+    await axios.delete(`https://json-server-pied-seven.vercel.app/api/Users/${selectedUser.value.id}`)
     
     // Update local data
     const index = users.value.findIndex(u => u.id === selectedUser.value.id)

@@ -269,7 +269,7 @@ const cancelTrip = async () => {
     refundAmount.value = Math.floor(props.trips.totalAmount * refundPercent)
     
     // API call to cancel the trip
-    await axios.patch(`https://json-server-production-de66.up.railway.app/purchased-trips/${props.trips.id}`, {
+    await axios.patch(`https://json-server-pied-seven.vercel.app/api/purchased-trips/${props.trips.id}`, {
       status: 'canceled',
       refundAmount: refundAmount.value,
       cancelDate: new Date().toISOString()

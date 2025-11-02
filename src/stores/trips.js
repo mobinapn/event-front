@@ -33,7 +33,7 @@ export const useTripsStore = defineStore('trips', () => {
     loading.value = true
     error.value = null
     try {
-      const response = await axios.get('https://json-server-production-de66.up.railway.app/events')
+      const response = await axios.get('https://json-server-pied-seven.vercel.app/api/events')
       trips.value = response.data || []
       console.log('this is trips', trips.value)
       return trips.value
@@ -67,7 +67,7 @@ export const useTripsStore = defineStore('trips', () => {
     loading.value = true
     error.value = null
     try {
-      const response = await axios.get('https://json-server-production-de66.up.railway.app/categories')
+      const response = await axios.get('https://json-server-pied-seven.vercel.app/api/categories')
       categories.value = response.data || []
       console.log('this is category', categories.value)
       return categories.value
@@ -124,7 +124,7 @@ export const useTripsStore = defineStore('trips', () => {
       error.value = null
       try {
         // Update the URL to match your JSON server structure
-        const response = await axios.get(`https://json-server-production-de66.up.railway.app/events?categoryId=${categoryId}`)
+        const response = await axios.get(`https://json-server-pied-seven.vercel.app/api/events?categoryId=${categoryId}`)
         // The JSON server will return an array directly, not nested under "events"
         trips.value = response.data || []
         console.log('Fetched category trips:', trips.value)
@@ -183,7 +183,7 @@ export const useTripsStore = defineStore('trips', () => {
     loading.value = true
     error.value = null
     try {
-      const response = await axios.get(`https://json-server-production-de66.up.railway.app/events/${id}`)
+      const response = await axios.get(`https://json-server-pied-seven.vercel.app/api/events/${id}`)
       currentTrip.value = response.data
       console.log('currentTrip', currentTrip.value)
       return response.data
