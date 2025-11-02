@@ -2,7 +2,7 @@ import { defineBoot } from '#q-app/wrappers'
 import axios from 'axios'
 
 // Create an axios instance
-const api = axios.create({ baseURL: 'https://web-production-d8f31.up.railway.app' })
+const api = axios.create({ baseURL: 'https://json-server-pied-seven.vercel.app/api' })
 
 // 1) Add a request interceptor
 api.interceptors.request.use(
